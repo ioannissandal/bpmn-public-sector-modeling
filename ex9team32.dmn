@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:modeler="http://camunda.org/schema/modeler/1.0" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" id="Definitions_0xe9o3p" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.16.0" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.20.0">
+  <decision id="Decision_07n8d2t" name="ΑΠΟΦΑΣΗ ΧΟΡΗΓΗΣΗΣ ΕΠΙΔΟΜΑΤΟΣ ΜΗΤΡΟΤΗΤΑΣ">
+    <informationRequirement id="InformationRequirement_0p5rae8">
+      <requiredDecision href="#Decision_1ii83x3" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_1bu1nz6">
+      <requiredInput href="#InputData_06smu2j" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_1bvq7c7">
+      <requiredInput href="#InputData_060vovq" />
+    </informationRequirement>
+    <authorityRequirement id="AuthorityRequirement_02qo1pp">
+      <requiredAuthority href="#KnowledgeSource_0yqcqjq" />
+    </authorityRequirement>
+    <decisionTable id="DecisionTable_1oy3ul0" biodi:annotationsWidth="400">
+      <input id="InputClause_0nksa1q" label="ΣΚΟΡ ΠΡΟΫΠΟΘΕΣΕΩΝ">
+        <inputExpression id="LiteralExpression_012tlsb" typeRef="integer">
+          <text></text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_0o5b6x6" label="ΚΑΤΑΣΤΑΣΗ ΑΙΤΗΣΗΣ">
+        <inputExpression id="LiteralExpression_1tidh8e" typeRef="string">
+          <text></text>
+        </inputExpression>
+      </input>
+      <input id="Input_1" label="TAXISNET" biodi:width="265">
+        <inputExpression id="InputExpression_1" typeRef="boolean">
+          <text></text>
+        </inputExpression>
+      </input>
+      <output id="Output_1" label="ΑΠΟΦΑΣΗ ΑΙΤΗΣΗΣ" typeRef="string">
+        <outputValues id="UnaryTests_0fljubi">
+          <text>"ΕΓΚΡΙΘΕΙΣΑ","ΑΠΟΡΡΙΠΤΕΤΑΙ"</text>
+        </outputValues>
+      </output>
+      <rule id="DecisionRule_1v1l6ym">
+        <inputEntry id="UnaryTests_0hkukqj">
+          <text>30</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1hd1g5v">
+          <text>"ΕΝΕΡΓΗ"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_12ksjoe">
+          <text>true</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_13p52cp">
+          <text>"ΕΓΚΡΙΘΕΙΣΑ"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0gaj5zh">
+        <inputEntry id="UnaryTests_042aja7">
+          <text>30</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_19zjoo4">
+          <text>"ΕΝΕΡΓΗ"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1qwr42d">
+          <text>false</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1xmmd51">
+          <text>"ΑΠΟΡΡΙΠΤΕΤΑΙ"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_06jhv4m">
+        <inputEntry id="UnaryTests_0saf7zc">
+          <text>30</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_02q0ues">
+          <text>"ΣΕ ΕΚΚΡΕΜΟΤΗΤΑ"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1xdg7bi">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0a5ppsm">
+          <text>"ΑΠΟΡΡΙΠΤΕΤΑΙ"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0o2nz7c">
+        <inputEntry id="UnaryTests_1hlr6fc">
+          <text>&lt; 30</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0m6rj8d">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1fsbzui">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0wcxywa">
+          <text>"ΑΠΟΡΡΙΠΤΕΤΑΙ"</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <inputData id="InputData_060vovq" name="ΤΑΥΤΟΠΟΙΗΣΗ ΜΕ ΚΩΔΙΚΟΥΣ TAXISNET" />
+  <inputData id="InputData_1ujjso8" name="ΠΙΘΑΝΗ ΗΜΕΡΟΜΗΝΙΑ ΤΟΚΕΤΟΥ" />
+  <inputData id="InputData_1y39y0z" name="ΒΕΒΑΙΩΣΗ ΑΠΟΧΗΣ ΑΠΟ ΕΡΓΑΣΙΑ" />
+  <inputData id="InputData_0yfp2si" name="ΛΗΞΙΑΡΧΙΚΗ ΠΡΑΞΗ ΓΕΝΝΗΣΗΣ" />
+  <inputData id="InputData_06smu2j" name="ΚΑΤΑΣΤΑΣΗ ΑΙΤΗΣΗΣ" />
+  <knowledgeSource id="KnowledgeSource_0lidemi" name="Νόμος 4670/2020 (ΦΕΚ 43/Α) Άρθρα 14, 15" />
+  <knowledgeSource id="KnowledgeSource_0yqcqjq" name="Κοινή Υπουργική Απόφαση Αριθμ. 80000/91907/2021 (ΦΕΚ 5407/Β) Άρθρα 1-13" />
+  <decision id="Decision_1ii83x3" name="ΙΚΑΝΟΠΟΙΗΣΗ ΠΡΟΫΠΟΘΕΣΕΩΝ">
+    <informationRequirement id="InformationRequirement_1ja1dxc">
+      <requiredInput href="#InputData_1ujjso8" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_1jmdzx4">
+      <requiredInput href="#InputData_1y39y0z" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_0pmsjp3">
+      <requiredInput href="#InputData_0yfp2si" />
+    </informationRequirement>
+    <authorityRequirement id="AuthorityRequirement_03mfbi3">
+      <requiredAuthority href="#KnowledgeSource_0lidemi" />
+    </authorityRequirement>
+    <decisionTable id="DecisionTable_0tbaoat" hitPolicy="COLLECT" aggregation="SUM" biodi:annotationsWidth="400">
+      <input id="InputClause_1tmbwih" label="ΗΜΕΡΟΜΗΝΙΑ ΤΟΚΕΤΟΥ" biodi:width="251">
+        <inputExpression id="LiteralExpression_1hsoh2w" typeRef="integer">
+          <text></text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_1qsnoqm" label="ΑΠΟΧΗ ΕΡΓΑΣΙΑΣ" biodi:width="258">
+        <inputExpression id="LiteralExpression_0ero3mt" typeRef="boolean">
+          <text></text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_1ksbw3r" label="ΠΡΑΞΗ ΓΕΝΝΗΣΗΣ" biodi:width="251">
+        <inputExpression id="LiteralExpression_0vuuetq" typeRef="boolean">
+          <text></text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_181vxwx" label="ΣΚΟΡΠΡΟΫΠΟΘΕΣΕΩΝ" typeRef="integer" biodi:width="295" />
+      <rule id="DecisionRule_1bl2p0k">
+        <inputEntry id="UnaryTests_0h3g4hy">
+          <text>&lt;= 8</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1eem18l">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1rylm4j">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1ozejje">
+          <text>10</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0jm3ypk">
+        <inputEntry id="UnaryTests_1w21zm6">
+          <text>&gt; 8</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_18pxsed">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0c6o3nd">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0c9dmn4">
+          <text>0</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0148jez">
+        <inputEntry id="UnaryTests_14aqq91">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1lydxb8">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1xw4a0b">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0s9axde">
+          <text>10</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1juzk5n">
+        <inputEntry id="UnaryTests_1h41jff">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1c48vs2">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ape7oj">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0twydog">
+          <text>0</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0g3ky0x">
+        <inputEntry id="UnaryTests_1qgqdsn">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1mystxa">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_08ujguy">
+          <text>true</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0a2lxcx">
+          <text>10</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_12i9lvh">
+        <inputEntry id="UnaryTests_03qki79">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0vg3gw6">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_15ekzk0">
+          <text>false</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_12imlm7">
+          <text>0</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <textAnnotation id="TextAnnotation_0aeexhp">
+    <text>ικανοποίηση προϋποθέσεων ασφάλισης, υπηκοότητας και χρονικής προθεσμίας</text>
+  </textAnnotation>
+  <association id="Association_1ywsq7a">
+    <sourceRef href="#TextAnnotation_0aeexhp" />
+    <targetRef href="#Decision_1ii83x3" />
+  </association>
+  <textAnnotation id="TextAnnotation_1u9j7mt">
+    <text>Επίδομα Μητρότητας (κυοφορίας-λοχείας) μισθωτών ασφαλισμένων του e-ΕΦΚΑ</text>
+  </textAnnotation>
+  <association id="Association_0rh7huh">
+    <sourceRef href="#TextAnnotation_1u9j7mt" />
+    <targetRef href="#Decision_07n8d2t" />
+  </association>
+  <textAnnotation id="TextAnnotation_1c0k18g">
+    <text>Η πιθανή ημερομηνία τοκετού πρέπει να είναι εντός 8 μηνών έτσι ώστε να εγκριθεί το δικαιολογητικό</text>
+  </textAnnotation>
+  <association id="Association_02t0xfo">
+    <sourceRef href="#TextAnnotation_1c0k18g" />
+    <targetRef href="#InputData_1ujjso8" />
+  </association>
+  <textAnnotation id="TextAnnotation_1bzkwgj">
+    <text>Ο εργοδότης της ασφαλισμένης με εξαρτημένη εργασία ενημερώνεται να εισέλθει στο σύστημα για τη συμπλήρωση της βεβαίωσης αποχής από την εργασία με τα στοιχεία της ημερομηνίας πρόσληψης, της ειδικότητας της ασφαλισμένης και της χρονικής διάρκειας αποχής από την εργασία.</text>
+  </textAnnotation>
+  <association id="Association_19epscj">
+    <sourceRef href="#TextAnnotation_1bzkwgj" />
+    <targetRef href="#InputData_1y39y0z" />
+  </association>
+  <textAnnotation id="TextAnnotation_0c1rtve">
+    <text>Η ληξιαρχική πράξη γέννησης του παιδιού αντλείται από την Υπηρεσία του e-ΕΦΚΑ μετά από διασταύρωση των στοιχείων με το Υποσύστημα του Πληροφοριακού Συστήματος του Μητρώου Πολιτών.</text>
+  </textAnnotation>
+  <association id="Association_04rfxiq">
+    <sourceRef href="#TextAnnotation_0c1rtve" />
+    <targetRef href="#InputData_0yfp2si" />
+  </association>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram>
+      <dmndi:DMNShape dmnElementRef="Decision_07n8d2t">
+        <dc:Bounds height="80" width="180" x="570" y="230" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_150ys6m" dmnElementRef="InputData_060vovq">
+        <dc:Bounds height="45" width="125" x="967" y="447" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_05x105o" dmnElementRef="InputData_1ujjso8">
+        <dc:Bounds height="45" width="125" x="327" y="647" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_09kupi5" dmnElementRef="InformationRequirement_1ja1dxc">
+        <di:waypoint x="390" y="647" />
+        <di:waypoint x="485" y="530" />
+        <di:waypoint x="485" y="510" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_1ca7a4p" dmnElementRef="InputData_1y39y0z">
+        <dc:Bounds height="45" width="125" x="467" y="647" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_0usci7n" dmnElementRef="InformationRequirement_1jmdzx4">
+        <di:waypoint x="530" y="647" />
+        <di:waypoint x="530" y="530" />
+        <di:waypoint x="530" y="510" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_03un0qs" dmnElementRef="InputData_0yfp2si">
+        <dc:Bounds height="45" width="125" x="607" y="647" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_1rfqa2s" dmnElementRef="InformationRequirement_0pmsjp3">
+        <di:waypoint x="670" y="647" />
+        <di:waypoint x="575" y="530" />
+        <di:waypoint x="575" y="510" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_1ndt0o0" dmnElementRef="InputData_06smu2j">
+        <dc:Bounds height="45" width="125" x="707" y="447" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_0akpzjg" dmnElementRef="InformationRequirement_0p5rae8">
+        <di:waypoint x="530" y="430" />
+        <di:waypoint x="615" y="330" />
+        <di:waypoint x="615" y="310" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_1k7rdfk" dmnElementRef="InformationRequirement_1bu1nz6">
+        <di:waypoint x="770" y="447" />
+        <di:waypoint x="660" y="330" />
+        <di:waypoint x="660" y="310" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_184f215" dmnElementRef="InformationRequirement_1bvq7c7">
+        <di:waypoint x="1030" y="447" />
+        <di:waypoint x="705" y="330" />
+        <di:waypoint x="705" y="310" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_0yn468e" dmnElementRef="TextAnnotation_0aeexhp">
+        <dc:Bounds height="70" width="150" x="280" y="340" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_1lfgrhx" dmnElementRef="Association_1ywsq7a">
+        <di:waypoint x="430" y="410" />
+        <di:waypoint x="463" y="430" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_0xwcmbr" dmnElementRef="TextAnnotation_1u9j7mt">
+        <dc:Bounds height="70" width="150" x="840" y="110" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_0tpqt1l" dmnElementRef="Association_0rh7huh">
+        <di:waypoint x="840" y="176" />
+        <di:waypoint x="737" y="230" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_0z53k9g" dmnElementRef="KnowledgeSource_0lidemi">
+        <dc:Bounds height="63" width="100" x="160" y="438" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_123p2h0" dmnElementRef="AuthorityRequirement_03mfbi3">
+        <di:waypoint x="260" y="470" />
+        <di:waypoint x="440" y="470" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_0jc6cml" dmnElementRef="KnowledgeSource_0yqcqjq">
+        <dc:Bounds height="63" width="100" x="160" y="238" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_1qgmfxj" dmnElementRef="AuthorityRequirement_02qo1pp">
+        <di:waypoint x="260" y="270" />
+        <di:waypoint x="570" y="270" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_11yfq4i" dmnElementRef="TextAnnotation_1c0k18g">
+        <dc:Bounds height="80" width="150" x="260" y="730" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_1yefuv5" dmnElementRef="Association_02t0xfo">
+        <di:waypoint x="372" y="730" />
+        <di:waypoint x="383" y="692" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_09hhklw" dmnElementRef="TextAnnotation_1bzkwgj">
+        <dc:Bounds height="110" width="252" x="444" y="725" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_1t2967w" dmnElementRef="Association_19epscj">
+        <di:waypoint x="509" y="725" />
+        <di:waypoint x="522" y="692" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_1fq4atc" dmnElementRef="TextAnnotation_0c1rtve">
+        <dc:Bounds height="110" width="210" x="790" y="720" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_1wq1tdn" dmnElementRef="Association_04rfxiq">
+        <di:waypoint x="790" y="734" />
+        <di:waypoint x="712" y="692" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_0aozqkb" dmnElementRef="Decision_1ii83x3">
+        <dc:Bounds height="80" width="180" x="440" y="430" />
+      </dmndi:DMNShape>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>

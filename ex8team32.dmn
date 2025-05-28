@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:modeler="http://camunda.org/schema/modeler/1.0" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" id="Definitions_1lylqx8" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.16.0" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.20.0">
+  <decision id="Decision_02r4evr" name="ΔΥΝΑΤΟΤΗΤΑ ΕΚΔΟΣΗΣ ΤΕΥΧΟΥΣ Σ.Ε.Π.Ε.Α">
+    <informationRequirement id="InformationRequirement_06gjyy9">
+      <requiredDecision href="#Decision_08czq64" />
+    </informationRequirement>
+    <authorityRequirement id="AuthorityRequirement_1i4z7j4">
+      <requiredAuthority href="#KnowledgeSource_0e2fts1" />
+    </authorityRequirement>
+    <decisionTable id="DecisionTable_0gy7ksm">
+      <input id="Input_1">
+        <inputExpression id="InputExpression_1" typeRef="string">
+          <text></text>
+        </inputExpression>
+      </input>
+      <output id="Output_1" typeRef="string" />
+      <rule id="DecisionRule_1pp90jh">
+        <inputEntry id="UnaryTests_1s10ata">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1xy7kcq">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0l1snjq">
+        <inputEntry id="UnaryTests_0jetzug">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_16flnhb">
+          <text></text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <inputData id="InputData_1x3k8sg" name="ΣΧΕΔΙΟ" />
+  <inputData id="InputData_18k6ebm" name="ΗΜΕΡΟΜΗΝΙΑ ΑΞΙΟΛΟΓΗΣΗΣ" />
+  <inputData id="InputData_1twkswf" name="ΗΜΕΡΟΜΗΝΙΑ ΑΠΟΣΤΟΛΗΣ ΣΧΕΔΙΟΥ" />
+  <businessKnowledgeModel id="BusinessKnowledgeModel_0r4wk1w" name="ΕΠΕΞΕΡΓΑΣΙΑ ΠΡΟΓΡΑΜΜΑΤΟΣ" />
+  <knowledgeSource id="KnowledgeSource_0e2fts1" name="ΝΟΜΟΘΕΣΙΑ" />
+  <businessKnowledgeModel id="BusinessKnowledgeModel_014ojkg" name="ΜΕΘΟΔΟΣ ΥΠΟΛΟΓΙΣΜΟΥ" />
+  <decision id="Decision_08czq64" name="ΑΠΟΦΑΣΗ ΣΥΝΤΑΞΗΣ ΕΓΓΡΑΦΟΥ ΕΓΚΡΙΣΗΣ">
+    <informationRequirement id="InformationRequirement_1kgxaxz">
+      <requiredDecision href="#Decision_1jxrr1v" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_100y7ec">
+      <requiredInput href="#InputData_18k6ebm" />
+    </informationRequirement>
+    <knowledgeRequirement id="KnowledgeRequirement_1b2bg3t">
+      <requiredKnowledge href="#BusinessKnowledgeModel_014ojkg" />
+    </knowledgeRequirement>
+    <decisionTable id="DecisionTable_11iw0xp">
+      <input id="InputClause_0a4r5sk">
+        <inputExpression id="LiteralExpression_13z2vx9" typeRef="string" />
+      </input>
+      <output id="OutputClause_19cwr0r" typeRef="string" />
+    </decisionTable>
+  </decision>
+  <decision id="Decision_1jxrr1v" name="ΑΞΙΟΛΟΓΗΣΗ ΠΡΟΓΡΑΜΜΑΤΟΣ">
+    <informationRequirement id="InformationRequirement_0btk13p">
+      <requiredInput href="#InputData_1x3k8sg" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_11de638">
+      <requiredInput href="#InputData_1twkswf" />
+    </informationRequirement>
+    <knowledgeRequirement id="KnowledgeRequirement_11inpk1">
+      <requiredKnowledge href="#BusinessKnowledgeModel_0r4wk1w" />
+    </knowledgeRequirement>
+    <decisionTable id="DecisionTable_0bt5gtm">
+      <input id="InputClause_0wr61ob">
+        <inputExpression id="LiteralExpression_06ksrwv" typeRef="string" />
+      </input>
+      <output id="OutputClause_0r5kt7y" typeRef="string" />
+    </decisionTable>
+  </decision>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram>
+      <dmndi:DMNShape dmnElementRef="Decision_02r4evr">
+        <dc:Bounds height="80" width="180" x="510" y="80" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_1t1qz44" dmnElementRef="InformationRequirement_06gjyy9">
+        <di:waypoint x="600" y="280" />
+        <di:waypoint x="600" y="180" />
+        <di:waypoint x="600" y="160" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_0q5x8at" dmnElementRef="InformationRequirement_1kgxaxz">
+        <di:waypoint x="480" y="480" />
+        <di:waypoint x="570" y="380" />
+        <di:waypoint x="570" y="360" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_0vxwcfp" dmnElementRef="InputData_1x3k8sg">
+        <dc:Bounds height="45" width="125" x="317" y="677" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_15ol6u6" dmnElementRef="InformationRequirement_0btk13p">
+        <di:waypoint x="380" y="677" />
+        <di:waypoint x="450" y="580" />
+        <di:waypoint x="450" y="560" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_0dugvgt" dmnElementRef="InputData_18k6ebm">
+        <dc:Bounds height="45" width="125" x="667" y="497" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_1sk8nad" dmnElementRef="InformationRequirement_100y7ec">
+        <di:waypoint x="730" y="497" />
+        <di:waypoint x="630" y="380" />
+        <di:waypoint x="630" y="360" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_1xb42wx" dmnElementRef="InputData_1twkswf">
+        <dc:Bounds height="45" width="125" x="507" y="677" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_0ijdb8q" dmnElementRef="InformationRequirement_11de638">
+        <di:waypoint x="570" y="677" />
+        <di:waypoint x="510" y="580" />
+        <di:waypoint x="510" y="560" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_18q3k4h" dmnElementRef="BusinessKnowledgeModel_0r4wk1w">
+        <dc:Bounds height="46" width="135" x="153" y="497" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_12cv09u" dmnElementRef="KnowledgeRequirement_11inpk1">
+        <di:waypoint x="288" y="520" />
+        <di:waypoint x="390" y="520" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_1gmt3r9" dmnElementRef="KnowledgeSource_0e2fts1">
+        <dc:Bounds height="63" width="100" x="270" y="89" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_1665jit" dmnElementRef="AuthorityRequirement_1i4z7j4">
+        <di:waypoint x="370" y="121" />
+        <di:waypoint x="510" y="120" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_0h1yipb" dmnElementRef="BusinessKnowledgeModel_014ojkg">
+        <dc:Bounds height="46" width="135" x="253" y="297" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_1h3bxfi" dmnElementRef="KnowledgeRequirement_1b2bg3t">
+        <di:waypoint x="388" y="320" />
+        <di:waypoint x="510" y="320" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_16u1lr3" dmnElementRef="Decision_08czq64">
+        <dc:Bounds height="80" width="180" x="510" y="280" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_0hbpdi9" dmnElementRef="Decision_1jxrr1v">
+        <dc:Bounds height="80" width="180" x="390" y="480" />
+      </dmndi:DMNShape>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>
